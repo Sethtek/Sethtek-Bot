@@ -111,7 +111,11 @@ bot.on("message", (message) => {
     message.delete();
     message.channel.send("```fix" + "\n" + "Please do not ping @Sethtek." + "```")
   }
-
+  
+  if(msg == prefix + "new_command" + suffix){
+    message.channel.send("**Yeet! I'm working boi maybe, but idk**")
+  }
+  
   //setTimeout(function(){ message.channel.send("0"); }, 10000);
   // The say command
   //if(message.content.includes(prefix + "say")){
