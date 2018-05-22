@@ -1,6 +1,6 @@
 // Sethtek Bot: Developed by Sethtek Dev (C) 2018 (Made for Discord (https://discordapp.com))
 // #r --SETHTEK BOT MAIN--
-console.log("Sethtek Bot is starting...")
+//console.log("Sethtek Bot is starting...")
 const Discord = require("discord.js");
 const bot = new Discord.Client
 const readline = require("readline")
@@ -241,33 +241,32 @@ bot.on("message", (message) => {
   //}
 
   // Interactive cola ordering function
-  if(msg == "cola"){
-    message.channel.send("Thanks for your time, here is your cola cold and fresh! :tumbler_glass: ");
-    console.log("Someone requested cola.");
-  }
+  //if(msg == "cola"){
+    //message.channel.send("Thanks for your time, here is your cola cold and fresh! :tumbler_glass: ");
+    //console.log("Someone requested cola.");
+  //}
 
   // Interactive fries ordering function
-  if(msg == "fries"){
-    message.channel.send("Thanks for your time, here are your fries hot and yummy! :fries: ");
-    console.log("Someone requested fries.");
-  }
+  //if(msg == "fries"){
+    //message.channel.send("Thanks for your time, here are your fries hot and yummy! :fries: ");
+    //console.log("Someone requested fries.");
+  //}
 
   // Interactive nuggets ordering function
-  if(msg == "nuggets"){
-    message.channel.send("Thanks for your time, here is your nugget freshly cracked and cooked! :hatching_chick: ");
-    console.log("Someone requested nuggets.");
-  }
+  //if(msg == "nuggets"){
+    //message.channel.send("Thanks for your time, here is your nugget freshly cracked and cooked! :hatching_chick: ");
+    //console.log("Someone requested nuggets.");
+  //}
 
   // Interactive cookies ordering function
-  if(msg == "cookies"){
-    message.channel.send("Thanks for your time, here are your cookies freshly baked! :cookie: :cookie: :cookie: ");
-    console.log("Someone requested cookies.");
-  }
+  //if(msg == "cookies"){
+    //message.channel.send("Thanks for your time, here are your cookies freshly baked! :cookie: :cookie: :cookie: ");
+    //console.log("Someone requested cookies.");
+  //}
 // #er
 
 // #r --BANNED WORDS SECTION--
-if(sAllowed = 0){
-  if(msg.includes("fuck")
+if(msg.includes("fuck")
     || msg.includes("``fuck``")
     || msg.includes("```fuck``")
     || msg.includes("shit")
@@ -315,10 +314,7 @@ if(sAllowed = 0){
     message.delete();
     message.author.send("Please watch your language!! :angry: ")
     // msg.includes("banned word") This is the bad word capsule template.
-  }else{
-
   }
-}
 // #er
 });
 // #er
