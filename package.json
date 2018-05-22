@@ -1,0 +1,13 @@
+{
+  "name": "Test",
+  "description": "Test",
+  "version": "0.0.1",
+  "main": "sethtekbot.js",
+  "scripts": {
+    "start": "node sethtekbot.js"
+  },
+  "dependencies": {
+    "discord.js": "11.1.0",
+    "request": "2.81.0"
+  }
+}
