@@ -332,6 +332,6 @@ bot.on("ready", () => {
 // #er
 
 // #r --BOT TOKEN--
-bot.login("NDIxNzU2MjE3NDU5NzM2NTc3.DYR3lA.cJkOHYP3dK6JIFcz0BAc8ho-CI4")
+bot.login(process.env.BOT_TOKEN)
 // #er
 // (C) 2018 Sethtek Dev
