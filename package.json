@@ -1,6 +1,6 @@
 {
-  "name": "Test",
-  "description": "Test",
+  "name": "Sethtek Bot",
+  "description": "An all in one bot for your Discord server.",
   "version": "0.0.1",
   "main": "sethtekbot.js",
   "scripts": {
