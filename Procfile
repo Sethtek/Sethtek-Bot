@@ -1,1 +1,1 @@
-worker: sethtekbot.js
+worker: node sethtekbot.js
