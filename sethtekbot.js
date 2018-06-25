@@ -1,22 +1,15 @@
 // Sethtek Bot: Developed by Sethtek Dev (C) 2018 (Made for Discord (https://discordapp.com))
-// #r --SETHTEK BOT MAIN--
-//console.log("Sethtek Bot is starting...")
+console.log("Sethtek Bot is starting, please wait...")
 const Discord = require("discord.js");
-const bot = new Discord.Client
+const bot = new Discord.Client();
+const config = require("./config.json");
+// config.token contains the bot's token
+// config.prefix contains the message prefix.
 const readline = require("readline")
-var cid = "384897007908814860"
-// #r --SERVER IDS--
-// Sethtek Driving Simulator - #sds-chat - 384897007908814860
-// Sethtek Driving Simulator - #development-log - 427971916524027916
-// Sethtek Driving Simulator - #announcements - 384898923225153537
-// Starworks Text Lobby - 421154547348799489
-// #er
-// #r --USER IDS--
-// Sethtek's ID <@384896058318389248>
-// #er
-// #er
+var cid = "450534653011558402"
+var logcid
 
-// #r --READLINE CONSOLE--
+// #r --READLINE CONSOLE FUNCTION--
 const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout
@@ -27,311 +20,703 @@ rl.on("line", (input) => {
 });
 // #er
 
-// #r --BOT ON--
-bot.on("message", (message) => {
-
-// #r --MAIN VARIABLES--
-  var user = message.author;
-  var msg = message.content;
-  var prefix = "<"
-  var suffix = ">"
-  msg = msg.toLowerCase()
-// #er
-
-// #r --MAIN BOT COMMANDS--
-  // The help command function
-  if(msg == prefix + "help" + suffix){
-    message.channel.send("```fix" + "\n" + "Sethtek Bot Help"
-    + "\n" + "\n" + "<help> : I will always help you :)"
-    + "\n" + "\n" + "<userinfo> : I will get your profile information"
-    + "\n" + "\n" + "<about> : This is some information about me"
-    + "\n" + "\n" + "<pingme> : I will ping you and reply"
-    + "\n" + "\n" + "**<boldme>** : I will reply to a bold formatted command"
-    //+ "\n" + "\n" + "<order> : A fun command to use for a restaurant roleplay"
-    + "\n" + "\n" + "<syntax fix> : I will send a message using the FIX syntax"
-    + "\n" + "\n" + "<syntax css> : I will send a message using the CSS syntax"
-    + "\n" + "\n" + "<> : This hurts me... :/"
-    + "\n" + "\n" + "<how are you> : I will tell you how I feel :)"
-    + "\n" + "\n" + "<lang> : Displays a list of all of the supported language commands"
-    + "\n" + "```")
-  } // + "\n" + "\n" + "" (This is the command template for the help bot, simply put it under the other commands above.)
-
-  // The about function
-  if(msg == prefix + "about" + suffix){
-    message.channel.send("```fix" + "\n" + "Sethtek Bot was created by Sethtek Dev"
-    + "\n" + "\n" + "About me:"
-    + "\n" + "I'm a friendly server moderation and fun bot. I'm is always ready to help someone :)"
-    + "\n" + "\n" + "Created date: 3/9/2018 at 15:24"
-    + "\n" + "\n" + "Sethtek Bot ID: 421756217459736577"
-    + "\n" + "\n" + "(C) 2018 Sethtek Dev"
-    + "\n" + "```")
-  }
-
-  // The user information function
-  if(msg == prefix + "userinfo" + suffix){
-    message.channel.send("```css" + "\n" + "-----User Information"
-    + "\n" + "\n" + "Username: "
-    + user.tag
-    + "\n" + "User ID: "
-    + user.id
-    + "\n" + "Date Created: "
-    + user.createdAt + "\n" + "\n" + "```" + user.avatarURL)
-  }
-
-  // Sets the channel ID var to the current channel
-  if(user.id == "384896058318389248"){
-    if(msg == prefix + "set cid here" + suffix){
-      cid = message.channel.id
-      console.log("The READLINE channel id is now set to the channel: " + cid)
-      message.delete()
-      //message.channel.send("**I can now send messages in this channel: " + "<" + "#" + cid + ">" + " from my console.**")
-    }
-    var delMsgNum = "20"
-
-    if(msg == prefix + "del" + suffix){
-      message.channel.send("```fix" + "\n" + "10 messages are about to be deleted." + "\n" + "```")
-      message.channel.bulkDelete(delMsgNum);
-      message.channel.send("```fix" + "\n" + "Successfully deleted 20 messages!" + "\n" + "```")
-      setTimeout(function(){ message.delete(); }, 10000);
-      console.log("The <del> command was used in the channel " + message.channel.id + ".")
-    }
-  }
-
-  // The language list function
-  if(msg == prefix + "lang" + suffix){
-    message.channel.send("```fix" + "\n" + "<help> : English-US Help"
-    + "\n" + "\n" + "<ayuda> : Spanish Help (W.I.P.)"
-    + "\n" + "\n" + "<aide> : French Help (W.I.P.)"
-    + "\n" + "\n" + "<dutch> : Dutch Help (Coming Soon)"
-    + "\n" + "\n" + "<russian> : Russian Help (Coming Soon)"
-    + "\n" + "```")
-  }
-
-  if(msg.includes("<@384896058318389248>")){
-    message.delete();
-    message.channel.send("```fix" + "\n" + "Please do not ping @Sethtek." + "```")
-  }
-  
-  if(msg == prefix + "new_command" + suffix){
-    message.channel.send("**Yeet! I'm working boi maybe, but idk**")
-  }
-  
-  //setTimeout(function(){ message.channel.send("0"); }, 10000);
-  // The say command
-  //if(message.content.includes(prefix + "say")){
-    //<say [saythis]>
-    //saythis = msg[0]
-    //function check(c){
-        //if(saythis == "<" || "s" || "a" || "y" || " "){
-            //new1 = msg.slice(1)
-            //saythis = new1
-            //check();
-        //}else{
-            //message.channel.send(saythis)
-        //}
-    //}
-    //check();
-  //}
-// #er
-
-// #r --OTHER LANGUAGE MAIN COMMANDS--
-  // Spanish help command function
-  if(msg == prefix + "ayuda" + suffix){
-    message.channel.send("```fix" + "\n" + "Ayuda de Sethtek Bot"
-    + "\n" + "\n" + "<ayuda>: siempre te ayudaré :)"
-    + "\n" + "\n" + "<userinfo>: obtendré su información de perfil"
-    + "\n" + "\n" + "<sobre>: esta es alguna información sobre mí"
-    + "\n" + "\n" + "<pingme>: te enviaré un ping y responderé"
-    + "\n" + "\n" + "**<boldme>**: responderé a un comando con formato negrita"
-    //+ "\n" + "\n" + "<order> : A fun command to use for a restaurant roleplay"
-    + "\n" + "\n" + "<corrección de sintaxis>: enviaré un mensaje usando la sintaxis FIX"
-    + "\n" + "\n" + "<syntax css>: Enviaré un mensaje usando la sintaxis css"
-    + "\n" + "\n" + "<>: Esto me duele ...: /"
-    + "\n" + "\n" + "<cómo estás>: te diré cómo me siento :)"
-    + "\n" + "\n" + "**Note that these translations might not be 100% accurate. My original native language is English-US.**"
-    + "\n" + "<help> For English-US Help."
-    + "\n" + "\n" + "<lang> : Muestra una lista de todos los comandos de idioma admitidos"
-    + "\n" + "```")
-  } // + "\n" + "\n" + "" (This is the command template for the help bot, simply put it under the other commands above.)
-
-  // French help command function
-  if(msg == prefix + "aide" + suffix){
-    message.channel.send("```fix" + "\n" + "Sethtek Bot Aide"
-    + "\ n" + "\ n" + "<aide>: Je t'aiderai toujours :)"
-    + "\ n" + "\ n" + "<userinfo>: j'obtiendrai vos informations de profil"
-    + "\ n" + "\ n" + "<à propos>: Voici quelques informations sur moi"
-    + "\ n" + "\ n" + "<pingme>: je vais vous envoyer un ping et vous répondre"
-    + "\ n" + "\ n" + "**<boldme>**: Je répondrai à une commande au format gras"
-    // + "\ n" + "\ n" + "<commande>: Une commande amusante à utiliser pour un jeu de rôle dans un restaurant"
-    + "\ n" + "\ n" + "<correction de syntaxe>: je vais envoyer un message en utilisant la syntaxe FIX"
-    + "\ n" + "\ n" + "<syntaxe css>: Je vais envoyer un message en utilisant la syntaxe CSS"
-    + "\ n" + "\ n" + "<>: Cela me fait mal ...: /"
-    + "\ n" + "\ n" + "<comment allez-vous>: je vais vous dire comment je me sens :)"
-    + "\ n" + "\ n" + "<sa-on>: S est autorisé."
-    + "\ n" + "\ n" + "<sa-off>: S n'est pas autorisé."
-    + "\ n" + "\ n" + "<lang>: Affiche une liste de toutes les commandes de langue supportées"
-    + "\n" + "```")
-  }
-// #er
-
-// #r --FUN COMMANDS--
-  // The ping me and reply function
-  if(msg == prefix + "pingme" + suffix){
-    message.reply("I pinged you, don't get mad at me and ban me xD")
-  }
-
-  // Another funny little simple interaction asking the bot how he is feeling :)
-  if(msg == prefix + "how are you" + suffix){
-    message.channel.send("I'm feelin' good today :smile: ")
-  }
-
-  // A funny little command where you don't put any rewuest but only the prefix and suffix and he doesn't like it
-  if(msg == prefix + "" + suffix){
-    message.channel.send("**>.<**")
-  }
-
-  // Checks if Sethtek Bot's ID is pinged in a message
-  if(msg.includes("<@421756217459736577>")){
-    message.channel.send("**Reporting for duty! How may I ``<help>``!?**" + "\n" + "https://goo.gl/EvhbCN")
-  }
-
-  // A simple fun bold command
-  if(msg == "**" + prefix + "boldme" + suffix + "**"){
-    message.reply("***You are BOLD!*** :smile: ")
-  }
-
-  // A simple "Syntax ```fix command"
-  if(msg == prefix + "syntax fix" + suffix){
-    message.channel.send("```fix" + "\n" + "This is the FIX syntax highlighting!" + "\n" + "```")
-  }
-
-  // A simple "Syntax ```css command"
-  if(msg == prefix + "syntax css" + suffix){
-    message.channel.send("```css" + "\n" + "This is the CSS syntax highlighting!" + "\n" + "```")
-  }
-// #er
-
-// #r --W.I.P. TESTING PARTS
-  //--------------------//
-  // This is the interactive ordering fun feature
-  //--------------------//
-  //var orderRequest = 0
-
-  //if(msg == prefix + "order" + suffix){
-    //message.channel.send("**Hello and welcome to the Sethtek Bot service center, How may I help you?**")
-    //message.channel.send("__**Here is our menu**__"
-    //+ "\n" + "**Pizza**"
-    //+ "\n" + "**Cola**"
-    //+ "\n" + "**Fries**"
-    //+ "\n" + "**Nuggets**"
-    //+ "\n" + "**Cookies**"
-    //+ "\n" + "----------------"
-    //+ "\n" + "__**Please type what you would like to have**__")
-
-    //orderRequest = 1
-    //console.log("The orderRequest is now: " + orderRequest)
-  //}
-
-  // Checks if there is an order
-  //if(orderRequest == 0){
-    // Interactive pizza ordering function
-    //if(msg == prefix + "pizza" + suffix){
-      //message.channel.send("You must say ``<order>`` before requesting an item, otherwise idk what your talking about xD")
-    //}
-  //}else{ // And if there is no order, then tell the person they should order their item before talking about it!!
-    //message.channel.send("Thanks for your time, here is your pizza hot and ready! :pizza: " + "**" + user.username + "**")
-    //orderRequest = 0;
-    //console.log("The orderRequest is now: " + orderRequest)
-  //}
-
-  // Interactive cola ordering function
-  //if(msg == "cola"){
-    //message.channel.send("Thanks for your time, here is your cola cold and fresh! :tumbler_glass: ");
-    //console.log("Someone requested cola.");
-  //}
-
-  // Interactive fries ordering function
-  //if(msg == "fries"){
-    //message.channel.send("Thanks for your time, here are your fries hot and yummy! :fries: ");
-    //console.log("Someone requested fries.");
-  //}
-
-  // Interactive nuggets ordering function
-  //if(msg == "nuggets"){
-    //message.channel.send("Thanks for your time, here is your nugget freshly cracked and cooked! :hatching_chick: ");
-    //console.log("Someone requested nuggets.");
-  //}
-
-  // Interactive cookies ordering function
-  //if(msg == "cookies"){
-    //message.channel.send("Thanks for your time, here are your cookies freshly baked! :cookie: :cookie: :cookie: ");
-    //console.log("Someone requested cookies.");
-  //}
-// #er
-
-// #r --BANNED WORDS SECTION--
-if(msg.includes("fuck")
-    || msg.includes("``fuck``")
-    || msg.includes("```fuck``")
-    || msg.includes("shit")
-    || msg.includes("``shit``")
-    || msg.includes("```shit```")
-    || msg.includes("bitch")
-    || msg.includes("``bitch``")
-    || msg.includes("```bitch```")
-    || msg.includes("damn")
-    || msg.includes("``damn``")
-    || msg.includes("```damn```")
-    || msg.includes("damnit")
-    || msg.includes("``damnit``")
-    || msg.includes("```damnit```")
-    || msg.includes("goddamn")
-    || msg.includes("``goddamn``")
-    || msg.includes("```goddamn```")
-    || msg.includes("bitch")
-    || msg.includes("``bitch``")
-    || msg.includes("```bitch```")
-    || msg.includes("whore")
-    || msg.includes("``whore``")
-    || msg.includes("```whore```")
-    || msg.includes("nigga")
-    || msg.includes("``nigga``")
-    || msg.includes("```nigga```")
-    || msg.includes("dick")
-    || msg.includes("``dick``")
-    || msg.includes("```dick```")
-    || msg.includes("penis")
-    || msg.includes("``penis``")
-    || msg.includes("```penis```")
-    || msg.includes("cum")
-    || msg.includes("``cum``")
-    || msg.includes("```cum``")
-    || msg.includes("pussy")
-    || msg.includes("``pussy``")
-    || msg.includes("```pussy```")
-    || msg.includes("boobs")
-    || msg.includes("boob")
-    || msg.includes("``boobs``")
-    || msg.includes("``boob``")
-    || msg.includes("```boobs```")
-    || msg.includes("```boob```")){
-    message.delete();
-    message.author.send("Please watch your language!! :angry: ")
-    // msg.includes("banned word") This is the bad word capsule template.
-  }
-// #er
-});
-// #er
-
 // #r --BOT READY--
-// This is where the commands go for when the bot starts and is ready
 bot.on("ready", () => {
-  console.log("Sethtek Bot has started successfully!")
-  bot.user.setActivity("<help> | :D")
+  // This event will run if the bot starts, and logs in, successfully.
+  console.log("Sethtek Bot has started sucessfully!");
+  console.log(`Usage stats: ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
+  // Example of changing the bot's playing game to something useful. `bot.user` is what the
+  bot.user.setActivity(`/help | ${bot.guilds.size} servers`);
 });
 // #er
 
-// #r --BOT TOKEN--
-bot.login(process.env.BOT_TOKEN)
+// #r --BOT GUILD CREATE--
+bot.on("guildCreate", guild => {
+  // This event triggers when the bot joins a guild.
+  console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+  bot.user.setActivity(`/help | ${bot.guilds.size} servers`);
+});
+// #er
+
+// #r --BOT GUILD DELETE--
+bot.on("guildDelete", guild => {
+  // this event triggers when the bot is removed from a guild.
+  console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+  bot.user.setActivity(`/help | ${bot.guilds.size} servers`);
+});
+// #er
+
+// #r --BOT ON--
+bot.on("message", async message => {
+  // Makes the bot ignore commands from itself or other bots
+  if(message.author.bot) return;
+  // Makes the bot ignore commands that do not start with it's own prefix
+  if(message.content.indexOf(config.prefix) !== 0) return;
+
+  // Here we separate our "command" name, and our "arguments" for the command.
+  // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
+  // command = say
+  // args = ["Is", "this", "the", "real", "life?"]
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+
+  // Contains the Help command
+  if(command == "help"){
+    const embed = {
+      "title": "Sethtek Bot help",
+      "description": "Here are all of the commands Sethtek Bot has.",
+      "url": "",
+      "color": 0xFF0000,
+      "timestamp": message.author.createdAt,
+      "footer": {
+        "icon_url": bot.user.avatarURL,
+        "text": bot.user.username
+      },
+      "thumbnail": {
+        "url": "https://goo.gl/5X8VdD"
+      },
+      "author": {
+        "name": message.author.username + " needs help.",
+        "url": "https://sites.google.com/view/sethtek-bot/home",
+        "icon_url": message.author.avatarURL
+      },
+      "fields": [
+        {
+          "name": "/userinfo",
+          "value": "I will get your profile information."
+        },
+        {
+          "name": "/about",
+          "value": "I will tell you a little bit about me."
+        },
+        {
+          "name": "/pingme",
+          "value": "I will ping you and reply."
+        },
+        {
+          "name": "/afk",
+          "value": "I will tell people that you have gone away for a bit."
+        },
+        {
+          "name": "/back",
+          "value": "I will tell people that you're back."
+        },
+        {
+          "name": "/serverinfo",
+          "value": "I will tell you a bit about this server."
+        },
+        {
+          "name": "/kick <@user> <reason>",
+          "value": "I will kick the mentioned user from the presence of the server."
+        },
+        {
+          "name": "/ban <@user> <reason>",
+          "value": "I will ban the mentioned user from the presence of the server."
+        },
+        {
+          "name": "/purge <amount>",
+          "value": "I will clear the specified amount of messages in the channel."
+        },
+        {
+          "name": "/ping",
+          "value": "I will send a message and return with the latency."
+        },
+        {
+          "name": "/sleep",
+          "value": "I will say good night to you :)"
+        }
+      ]
+    };
+    message.channel.send({embed});
+  }
+
+  // Contains the Channel ID command
+  if(command == "cid"){
+    cid = message.channel.id
+    console.log(`The READLINE channel id is now set to the channel: ${message.channel.name} : ${message.channel.id} in the server, ${message.channel.guild.name} : ${message.channel.guild.id}`)
+    message.delete()
+    //message.channel.send("**I can now send messages in this channel: " + "<" + "#" + cid + ">" + " from my console.**")
+  }
+
+  // Contains the User Info command
+  if(command == "userinfo"){
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member){
+      const embed = {
+        "title": "Invalid Mentioned Member",
+        "description": "Please mention a valid member of this server",
+        "url": "",
+        "color": 16741376,
+        "fields": []
+      };
+      return message.channel.send({embed});
+    }
+
+    const embed = {
+      "title": "Username",
+      "description": member.user.tag,
+      "url": "",
+      "color": 16741376,
+      "timestamp": member.user.createdAt,
+      "footer": {
+        "icon_url": bot.user.avatarURL,
+        "text": bot.user.username
+      },
+      "thumbnail": {
+        "url": member.user.avatarURL
+      },
+      "author": {
+        "name": member.user.username,
+        "url": "https://discordapp.com",
+        "icon_url": member.user.avatarURL
+      },
+      "fields": [
+        {
+          "name": "Status",
+          "value": member.user.presence.status
+        },
+        {
+          "name": "User ID",
+          "value": member.user.id
+        },
+        {
+          "name": "Date Created",
+          "value": member.user.createdAt
+        }
+      ]
+    };
+    message.channel.send({ embed });
+  }
+
+  // Contains the Ping Latency command
+  if(command == "ping") {
+    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+    const m = await message.channel.send("Ping?");
+    m.edit(`**Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms**`);
+  }
+
+  // Contains the Say command
+  if(command == "say") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use.
+    // To get the "message" itself we join the `args` back into a string with spaces:
+    const sayMessage = args.join(" ");
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{});
+    // And we get the bot to say the thing:
+    message.channel.send(sayMessage);
+  }
+
+  // Contains the KICK command
+  if(command == "kick") {
+    function invalidMemberKick(){
+      const embed = {
+        "title": "",
+        "description": "The mentioned member is an invalid member.",
+        "url": "",
+        "color": 16764160,
+        "author": {
+          "name": "Invalid Member",
+          "url": "",
+          "icon_url": message.author.avatarURL
+        },
+        "fields": [
+          {
+            "name": "Moderator",
+            "value": `<@${message.author.id}>`
+          },
+          {
+            "name": "Reason",
+            "value": "Member mentioned is not valid."
+          }
+        ]
+      };
+      message.channel.send({embed});
+    }
+    function noKickPerms(){
+      const embed = {
+        "title": "",
+        "description": `You do not have permissions to kick.`,
+        "url": "",
+        "color": 16764160,
+        "author": {
+          "name": "No Permission",
+          "url": "",
+          "icon_url": message.author.avatarURL
+        },
+        "fields": [
+          {
+            "name": "User",
+            "value": `<@${message.author.id}>`
+          },
+          {
+            "name": "Reason",
+            "value": "No kick permissions."
+          }
+        ]
+      };
+      message.channel.send({embed});
+    }
+    function memberKicked(){
+      const embed = {
+        "title": "User",
+        "description": `<@${member.user.id}>`,
+        "url": "",
+        "color": 16711680,
+        "author": {
+          "name": "Member Kicked",
+          "url": "",
+          "icon_url": member.user.avatarURL
+        },
+        "fields": [
+          {
+            "name": "Moderator",
+            "value": `<@${message.author.id}>`
+          },
+          {
+            "name": "Reason",
+            "value": `${reason}`
+          }
+        ]
+      };
+      message.channel.send({embed});
+    }
+
+    // This command must be limited to mods and admins. In this example we just hardcode the role names.
+    // Please read on Array.some() to understand this bit:
+    // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
+    if(!message.member.roles.some(r=>["Admin", "Staff", "Administrator", "Moderator", "Sethtek Bot"].includes(r.name)) )
+      return noKickPerms()
+
+    // Let's first check if we have a member and if we can kick them!
+    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
+    // We can also support getting the member by ID, which would be args[0]
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member)
+      return invalidMemberKick()
+    if(!member.kickable)
+      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+
+    // slice(1) removes the first part, which here should be the user mention or ID
+    // join(' ') takes all the various parts to make it a single string.
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+
+    // Now, time to kick!
+    await member.kick(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+    memberKicked()
+  }
+
+  // Commands only @Sethtek Dev#0412 can use
+  if(message.author.id = 384896058318389248){
+    // Contains the OWNERKICK command
+    if(command == "ownerkick") {
+      function invalidMemberKick(){
+        const embed = {
+          "title": "",
+          "description": "The mentioned member is an invalid member.",
+          "url": "",
+          "color": 16764160,
+          "author": {
+            "name": "Invalid Member",
+            "url": "",
+            "icon_url": message.author.avatarURL
+          },
+          "fields": [
+            {
+              "name": "Sethtek Bot Owner",
+              "value": `<@${message.author.id}>`
+            },
+            {
+              "name": "Reason",
+              "value": "Member mentioned is not valid."
+            }
+          ]
+        };
+        message.channel.send({embed});
+      }
+      function noKickPerms(){
+        const embed = {
+          "title": "",
+          "description": `You do not have permissions to kick.`,
+          "url": "",
+          "color": 16764160,
+          "author": {
+            "name": "No Permission",
+            "url": "",
+            "icon_url": message.author.avatarURL
+          },
+          "fields": [
+            {
+              "name": "User",
+              "value": `<@${message.author.id}>`
+            },
+            {
+              "name": "Reason",
+              "value": "You are not the owner of Sethtek Bot, you can't owner kick."
+            }
+          ]
+        };
+        message.channel.send({embed});
+      }
+      function memberKicked(){
+        const embed = {
+          "title": "User",
+          "description": `<@${member.user.id}>`,
+          "url": "",
+          "color": 16711680,
+          "author": {
+            "name": "Member Kicked",
+            "url": "",
+            "icon_url": member.user.avatarURL
+          },
+          "fields": [
+            {
+              "name": "Sethtek Bot Owner",
+              "value": `<@${message.author.id}>`
+            },
+            {
+              "name": "Reason",
+              "value": `${reason}`
+            }
+          ]
+        };
+        message.channel.send({embed});
+      }
+
+      // Let's first check if we have a member and if we can kick them!
+      // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
+      // We can also support getting the member by ID, which would be args[0]
+      let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+      if(!member)
+        return invalidMemberKick()
+      if(!member.kickable)
+        return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+
+      // slice(1) removes the first part, which here should be the user mention or ID
+      // join(' ') takes all the various parts to make it a single string.
+      let reason = args.slice(1).join(' ');
+      if(!reason) reason = "No reason provided";
+
+      // Now, time to kick!
+      await member.kick(reason)
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+      memberKicked()
+    }
+
+    // Contains the OWNERBAN command
+    if(command == "ownerban") {
+      // Most of this command is identical to kick, except that here we'll only let admins do it.
+      // In the real world mods could ban too, but this is just an example, right? ;)
+      let member = message.mentions.members.first();
+      if(!member)
+        return message.reply("Please mention a valid member of this server");
+      if(!member.bannable)
+        return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+
+      let reason = args.slice(1).join(' ');
+      if(!reason) reason = "No reason provided";
+
+      await member.ban(reason)
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+      message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+    }
+  }
+
+  // Contains the BAN command
+  if(command == "ban") {
+    // Most of this command is identical to kick, except that here we'll only let admins do it.
+    // In the real world mods could ban too, but this is just an example, right? ;)
+    if(!message.member.roles.some(r=>["Admin", "Staff", "Administrator", "Moderator", "Sethtek Bot"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+
+    let member = message.mentions.members.first();
+    if(!member)
+      return message.reply("Please mention a valid member of this server");
+    if(!member.bannable)
+      return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+
+    await member.ban(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+  }
+
+  // Contains the PURGE command
+  if(command == "purge") {
+    function noPurgePerms(){
+      const embed = {
+        "title": "",
+        "description": `You do not have permissions to purge.`,
+        "url": "",
+        "color": 16764160,
+        "author": {
+          "name": "No Permission",
+          "url": "",
+          "icon_url": message.author.avatarURL
+        },
+        "fields": [
+          {
+            "name": "User",
+            "value": `<@${message.author.id}>`
+          },
+          {
+            "name": "Reason",
+            "value": "No purge permissions."
+          }
+        ]
+      };
+      message.channel.send({embed});
+    }
+
+    // This command removes all messages from all users in the channel, up to 100.
+    if(!message.member.roles.some(r=>["Admin", "Staff", "Administrator", "Moderator", "Sethtek Bot"].includes(r.name)) )
+      return noPurgePerms()
+    // get the delete count, as an actual number.
+    const deleteCount = parseInt(args[0], 10);
+
+    // Ooooh nice, combined conditions. <3
+    if(!deleteCount || deleteCount < 2 || deleteCount > 100)
+      return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+
+    // So we get our messages, and delete them. Simple enough, right?
+    const fetched = await message.channel.fetchMessages({limit: deleteCount});
+    message.channel.bulkDelete(fetched)
+      .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+
+    const embed = {
+      "title": `${deleteCount} Messages Deleted`,
+      "description": `${deleteCount} Messages have been sucessfully deleted.`,
+      "url": "",
+      "color": 16727808,
+      "timestamp": "2018-06-02T04:10:04.718Z",
+      "thumbnail": {
+        "url": "https://goo.gl/Dy4o7o"
+      },
+      "fields": []
+    };
+    message.channel.send({embed});
+  }
+
+  // Contains the SERVER INFO command
+  if(command == "serverinfo"){
+    const embed = {
+      "title": "Server ID",
+      "description": bot.guilds.id,
+      "url": "",
+      "color": 16741376,
+      "timestamp": bot.guilds.createdAt,
+      "footer": {
+        "icon_url": bot.user.avatarURL,
+        "text": bot.user.username
+      },
+      "thumbnail": {
+        "url": message.author.user.avatarURL
+      },
+      "author": {
+        "name": message.author.guild.name,
+        "url": "https://discordapp.com",
+        "icon_url": message.author.user.avatarURL
+      },
+      "fields": [
+        {
+          "name": "Status",
+          "value": message.author.user.presence.status
+        },
+        {
+          "name": "User ID",
+          "value": message.author.user.id
+        },
+        {
+          "name": "Date Created",
+          "value": message.author.user.createdAt
+        }
+      ]
+    };
+    message.channel.send({ embed });
+  }
+
+  // Contains the About command
+  if(command == "about"){
+    const embed = {
+      "title": "About Me",
+      "description": "I'm an all in one Discord bot. \n I can do many things. \n \n **Type /help for commands.**",
+      "url": "",
+      "color": 16738048,
+      "timestamp": "2018-06-01T21:26:18.432Z",
+      "footer": {
+        "icon_url": bot.user.avatarURL,
+        "text": "© Sethtek Dev 2018 | v2.0"
+      },
+      "thumbnail": {
+        "url": bot.user.avatarURL
+      },
+      "author": {
+        "name": "Sethtek Bot | Info",
+        "url": "https://sites.google.com/view/sethtek-bot/home",
+        "icon_url": bot.user.avatarURL
+      },
+      "fields": [
+        {
+          "name": "Current users",
+          "value": `${bot.users.size}`
+        },
+        {
+          "name": "Current channels",
+          "value": `${bot.channels.size}`
+        },
+        {
+          "name": "Current guilds",
+          "value": `${bot.guilds.size}`
+        },
+        {
+          "name": "Creator",
+          "value": "Sethtek Dev ``aka`` <@384896058318389248>"
+        }
+      ]
+    };
+    message.channel.send({embed});
+  }
+
+  // Contains the Embed Test command
+  if(command == "embed"){
+    const embed = {
+      "title": "GO TO DISCORD BOI!",
+      "description": "GIT [CANARY](https://canary.discordapp.com) HERE BOI!!",
+      "url": "https://discordapp.com",
+      "color": 3145472,
+      "timestamp": "2018-06-01T23:47:21.905Z",
+      "footer": {
+        "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "text": "foot text. blblblblblbl ah ah aah"
+      },
+      "author": {
+        "name": "THIS IS AN EMBED!!",
+        "url": "https://discordapp.com",
+        "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+      },
+      "fields": [
+        {
+          "name": "TEST 1",
+          "value": "INLINE :)",
+          "inline": true
+        },
+        {
+          "name": "TEST 2",
+          "value": "ye",
+          "inline": true
+        },
+        {
+          "name": "WHY AM I YELLING?",
+          "value": "because this is kinda annoying...",
+          "inline": true
+        },
+        {
+          "name": "LaStInLiNe",
+          "value": "such wow.",
+          "inline": true
+        }
+      ]
+    };
+    message.channel.send({ embed });
+  }
+
+  // Contains the Sleep command
+  if(command == "sleep"){
+    const embed = {
+      "title": "Good night",
+      "description": `${message.author.username}, cya tomorrow. :wave: `,
+      "url": "",
+      "color": 1907997,
+      "timestamp": "2018-06-01T21:26:18.432Z",
+      "footer": {
+        "icon_url": bot.user.avatarURL,
+        "text": "Sleep"
+      },
+      "thumbnail": {
+        "url": "https://goo.gl/iicUH7"
+      },
+      "author": {
+        "name": `${message.author.username} | Sleep`,
+        "url": "",
+        "icon_url": message.author.avatarURL
+      },
+      "fields": [
+      ]
+    };
+    message.channel.send({embed});
+  }
+
+  // I will ping you and reply
+  if(command == "pingme"){
+    message.reply("I pinged you. Now don't get mad and ban me xD")
+  }
+
+  // I will DM you
+  if(command == "dmme"){
+    message.author.send("Heyo, you said for me to dm you lol")
+  }
+
+  // I will tell people you're going to be afk for a while
+  if(command == "afk"){
+    const embed = {
+      "title": "",
+      "description": `<@${message.author.id}>, cya soon. :wave: `,
+      "url": "",
+      "color": 16722731,
+      "author": {
+        "name": `${message.author.username} is AFK`,
+        "url": "",
+        "icon_url": message.author.avatarURL
+      },
+      "fields": [
+      ]
+    };
+    message.channel.send({embed});
+  }
+
+  // I will tell people you're back from afk
+  if(command == "back"){
+    const embed = {
+      "title": "",
+      "description": `<@${message.author.id}>, welcome back! :wave: `,
+      "url": "",
+      "color": 3997483,
+      "author": {
+        "name": `${message.author.username} is back`,
+        "url": "",
+        "icon_url": message.author.avatarURL
+      },
+      "fields": [
+      ]
+    };
+    message.channel.send({embed});
+  }
+
+  if(command == "devlog") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use.
+    // To get the "message" itself we join the `args` back into a string with spaces:
+    const sayMessage = args.join(" ");
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{});
+    // And we get the bot to say the thing:
+    //bot.channels.find(id, "457552348584345601").send("● " + sayMessage)
+    bot.channels.get(457552348584345601).send("● " + sayMessage);
+  }
+
+  if(command == "message"){
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    let reason = args.slice(1).join(' ');
+    message.member.send(reason);
+  }
+
+});
+// #er
+
+// #r --BOT LOGIN--
+bot.login(config.token);
 // #er
 // (C) 2018 Sethtek Dev
