@@ -2,7 +2,8 @@
 console.log("Sethtek Bot is starting, please wait...")
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const config = require("./config.json");
+//const config = require("./config.json");
+var prefix = "/"
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
 const readline = require("readline")
@@ -51,13 +52,13 @@ bot.on("message", async message => {
   // Makes the bot ignore commands from itself or other bots
   if(message.author.bot) return;
   // Makes the bot ignore commands that do not start with it's own prefix
-  if(message.content.indexOf(config.prefix) !== 0) return;
+  if(message.content.indexOf(prefix) !== 0) return;
 
   // Here we separate our "command" name, and our "arguments" for the command.
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
   // Contains the Help command
@@ -717,6 +718,6 @@ bot.on("message", async message => {
 // #er
 
 // #r --BOT LOGIN--
-bot.login(config.token);
+bot.login(process.env.BOT_TOKEN);
 // #er
 // (C) 2018 Sethtek Dev
